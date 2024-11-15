@@ -23,6 +23,8 @@ function HotelListAddButton() {
       };
     });
 
+    console.log('hotels', hotels);
+
     //계층구조 hotel->room
     hotels.forEach((hotel) => {
       const hotelDocRef = doc(collection(store, COLLECTIONS.HOTEL));
