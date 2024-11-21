@@ -2,7 +2,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Spacing from '@shared/Spacing';
 import useHotels from '@components/hotelList/hooks/useHotels';
-import Hotel from '@components/hotelList/Hotel';
+import HotelItem from '@/components/hotelList/HotelItem';
 import Top from '@shared/Top';
 import { Fragment } from 'react';
 
@@ -21,8 +21,8 @@ function HotelList() {
       >
         <ul>
           {hotels?.map((hotel, idx) => (
-            <Fragment>
-              <Hotel hotel={hotel} />
+            <Fragment key={idx}>
+              <HotelItem hotel={hotel} />
 
               {hotels.length - 1 === idx ? null : (
                 <Spacing

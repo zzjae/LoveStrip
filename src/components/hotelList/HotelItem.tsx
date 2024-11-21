@@ -10,7 +10,7 @@ import addDelimiter from '@utils/addDelimiter';
 import Tag from '@shared/Tag';
 import formatTime from '@utils/formatTime';
 import { useEffect, useState } from 'react';
-function Hotel({ hotel }: { hotel: HotelInter }) {
+function HotelItem({ hotel }: { hotel: HotelInter }) {
   const [remainedTime, setRemainedTime] = useState(0);
 
   useEffect(() => {
@@ -105,4 +105,4 @@ const imageStyles = css`
   margin-left: 16px;
 `;
 
-export default Hotel;
+export default HotelItem;

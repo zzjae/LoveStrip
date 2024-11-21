@@ -13,4 +13,6 @@ export interface Hotel {
     promoEndTime?: string;
     tagThemeStyle: { backgroundColor: string; fontColor: string };
   };
+
+  recommendHotels: string[];
 }
