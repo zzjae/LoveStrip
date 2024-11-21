@@ -5,6 +5,10 @@ import {
   getDocs,
   query,
   startAfter,
+  doc,
+  getDoc,
+  where,
+  documentId,
 } from 'firebase/firestore';
 
 import { COLLECTIONS } from '@/constants';
@@ -38,4 +42,30 @@ export async function getHotels(pageParams?: QuerySnapshot<Hotel>) {
     items,
     lastVisible,
   };
+}
+
+export async function getHotel(id: string) {
+  const snapShot = await getDoc(doc(store, COLLECTIONS.HOTEL, id));
+
+  return {
+    id,
+    ...snapShot.data(),
+  } as Hotel;
+}
+
+export async function getRecommendHotels(hotelIds: string[]) {
+  const recommendQuery = query(
+    collection(store, COLLECTIONS.HOTEL),
+    where(documentId(), 'in', hotelIds),
+  );
+
+  const snapshot = await getDocs(recommendQuery);
+
+  return snapshot.docs.map(
+    (doc) =>
+      ({
+        id: doc.id,
+        ...doc.data(),
+      }) as Hotel,
+  );
 }
