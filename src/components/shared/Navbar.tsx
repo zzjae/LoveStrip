@@ -5,20 +5,31 @@ import { colors } from '@/styles/colorPalette';
 import Button from '@shared/Button';
 import Flex from '@shared/Flex';
 import { useCallback } from 'react';
+
+import useUser from '@/hooks/auth/useUser';
+
 function Navbar() {
   const location = useLocation();
 
   const showSignButton =
     ['/signup', '/signin'].includes(location.pathname) === false;
 
-  // TODO
-  const user = null;
+  const user = useUser();
 
   const renderButton = useCallback(() => {
     if (user != null) {
       return (
         <Link to="/my">
-          <img src="" alt="" />
+          <img
+            src={
+              user.photoUrl ??
+              'https://consent.cookiefirst.com/sites/iconfinder.com-a78e075e-557f-41cd-be61-cc12d6cc8be8/consent.js'
+            }
+            alt="유저 이미지"
+            width={40}
+            height={40}
+            style={{ borderRadius: '100%' }}
+          />
         </Link>
       );
     }
@@ -36,7 +47,7 @@ function Navbar() {
 
   return (
     <Flex justify="space-between" align="center" css={navbarContainerStyles}>
-      <Link to="/">홈</Link>
+      <Link to="/">Love Trip</Link>
       {renderButton()}
     </Flex>
   );
