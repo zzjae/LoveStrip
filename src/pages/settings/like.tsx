@@ -5,7 +5,7 @@ import {
   DragDropContext,
   Draggable,
   Droppable,
-  DraggableProps,
+  // DraggableProps,
   DropResult,
   DroppableProps,
 } from 'react-beautiful-dnd';
