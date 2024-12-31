@@ -7,6 +7,7 @@ import Flex from '@shared/Flex';
 import { useCallback } from 'react';
 
 import useUser from '@/hooks/auth/useUser';
+import Spacing from '@/components/shared/Spacing';
 
 function Navbar() {
   const location = useLocation();
@@ -19,18 +20,29 @@ function Navbar() {
   const renderButton = useCallback(() => {
     if (user != null) {
       return (
-        <Link to="/my">
-          <img
-            src={
-              user.photoUrl ??
-              'https://consent.cookiefirst.com/sites/iconfinder.com-a78e075e-557f-41cd-be61-cc12d6cc8be8/consent.js'
-            }
-            alt="유저 이미지"
-            width={40}
-            height={40}
-            style={{ borderRadius: '100%' }}
-          />
-        </Link>
+        <Flex align="center">
+          <Link to="/my">
+            <img
+              src={
+                user.photoUrl ??
+                'https://consent.cookiefirst.com/sites/iconfinder.com-a78e075e-557f-41cd-be61-cc12d6cc8be8/consent.js'
+              }
+              alt="유저 이미지"
+              width={40}
+              height={40}
+              style={{ borderRadius: '100%' }}
+            />
+          </Link>
+          <Spacing size={4} direction="horizontal" />
+          <Link to="settings">
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-06-64.png"
+              alt=""
+              width={40}
+              height={40}
+            />
+          </Link>
+        </Flex>
       );
     }
 
