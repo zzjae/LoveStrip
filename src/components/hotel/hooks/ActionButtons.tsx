@@ -8,18 +8,33 @@ import { Hotel } from '@models/hotel';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
+import useLike from '@/hooks/like/useLike';
+
 function ActionButtons({ hotel }: { hotel: Hotel }) {
   const share = useShare();
+  const { data: likes, mutate: like } = useLike();
+  const { name, comment, mainImageUrl, id } = hotel;
 
-  const { name, comment, mainImageUrl } = hotel;
+  const isLike = Boolean(likes?.find((like) => like.hotelId === hotel.id));
+
   return (
     <Flex css={containerStyles}>
       <Button
         label="찜하기"
         onClick={() => {
-          //TODO
+          like({
+            hotel: {
+              name,
+              mainImageUrl,
+              id,
+            },
+          });
         }}
-        iconUrl="https://consent.cookiefirst.com/sites/iconfinder.com-a78e075e-557f-41cd-be61-cc12d6cc8be8/consent.js"
+        iconUrl={
+          isLike
+            ? 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-64.png'
+            : 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-64.png'
+        }
       />
       <Button
         label="공유하기"
