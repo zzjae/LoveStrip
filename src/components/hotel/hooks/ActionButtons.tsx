@@ -56,7 +56,7 @@ function ActionButtons({ hotel }: { hotel: Hotel }) {
       >
         <Button
           label="링크복사"
-          iconUrl="https://consent.cookiefirst.com/sites/iconfinder.com-a78e075e-557f-41cd-be61-cc12d6cc8be8/consent.js"
+          iconUrl="https://cdn3.iconfinder.com/data/icons/feather-5/24/copy-64.png"
         />
       </CopyToClipboard>
     </Flex>

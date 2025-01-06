@@ -134,7 +134,7 @@ export default css`
     border-spacing: 0;
   }
   button {
-    border: 1px solid;
+    border: none;
     margin: 0;
     padding: 0;
     width: auto;
