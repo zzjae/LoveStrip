@@ -13,6 +13,7 @@ function useHotels() {
     getNextPageParam: (snapshot) => {
       return snapshot.lastVisible;
     },
+    suspense: true,
   }); //첫번째는 키값 두번째는 패치함수
 
   //다음페이지 호출 가능 여부

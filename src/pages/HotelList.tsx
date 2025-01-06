@@ -6,6 +6,7 @@ import HotelItem from '@/components/hotelList/HotelItem';
 import Top from '@shared/Top';
 import { Fragment } from 'react';
 import useLike from '@/hooks/like/useLike';
+import withSuspense from '@/components/shared/hocs/withSuspense';
 
 function HotelList() {
   const { data: hotels, hasNextPage, loadMore } = useHotels();
@@ -46,4 +47,6 @@ function HotelList() {
     </div>
   );
 }
-export default HotelList;
+export default withSuspense(HotelList, {
+  fallback: <div>호텔리스트 불러오는중 ....</div>,
+});
