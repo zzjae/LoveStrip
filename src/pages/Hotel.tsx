@@ -9,6 +9,7 @@ import ActionButtons from '@components/hotel/hooks/ActionButtons';
 import Review from '@components/hotel/Review';
 import ScrollProgressBar from '@/components/shared/ScrollProgressBar';
 import { css } from '@emotion/react';
+import SEO from '@/components/shared/SEO';
 
 function HotelPage() {
   const { id } = useParams() as { id: string };
@@ -22,6 +23,7 @@ function HotelPage() {
   const { name, comment, images, contents, recommendHotels } = data;
   return (
     <div>
+      <SEO title={name} description={comment} image={images[0]} />
       <ScrollProgressBar style={ScrollProgressBarStyles} />
       <Top title={name} subTitle={comment} />
       <Carousel images={images} />
